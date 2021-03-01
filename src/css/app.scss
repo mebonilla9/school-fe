@@ -1,1 +1,40 @@
 // app global css in SCSS form
+.tittle {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 2px lightblue;
+    
+  }
+  .tittletable {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      text-align: center;
+      text-shadow: 2px 2px 2px lightblue;
+      margin: 0px;
+      padding-bottom: 40px;
+  }
+  
+  .form {
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    align-self: flex-start;
+    margin-top: 120px;
+  }
+  .input {
+    width: 250px;
+    align-items: center;
+  }
+  
+  .table {
+    align-self: flex-end;
+    padding-top: 50px;
+    width: 800px;
+  }
+  
+  .stable {
+    border-radius: 10px;
+    align-self: flex-start;
+    margin-top: 120px;
+    
+   
+  }

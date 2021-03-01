@@ -2,10 +2,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') }
-    ]
+    component: () => import('pages/Formulario.vue')
   },
 
   // Always leave this as last one,
@@ -15,5 +12,4 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
-
 export default routes
