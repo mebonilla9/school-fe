@@ -20,9 +20,9 @@
                 square
                 filled
                 clearable
-                v-model="user.codigo"
+                v-model="user.document"
                 type="text"
-                label="Codigo"
+                label="Documento"
                 lazy-rules
                 :rules="[
                   val =>
@@ -34,7 +34,7 @@
                 bg-color="grey-2"
                 filled
                 clearable
-                v-model="user.nombre"
+                v-model="user.name"
                 type="text"
                 label="Nombre"
                 lazy-rules
@@ -49,13 +49,14 @@
                 square
                 filled
                 clearable
-                v-model="user.edad"
+                v-model="user.age"
                 type="number"
                 label="Edad"
                 lazy-rules
                 :rules="[
                   val =>
-                    (val && val.length > 0) || 'Por favor escriba una edad correcta'
+                    (val && val.length > 0) ||
+                    'Por favor escriba una edad correcta'
                 ]"
               />
               <q-card-actions class="q-px-md justify-center">
@@ -77,21 +78,23 @@
           <div>
             <h4 class="tittletable">Registro</h4>
           </div>
-          <q-table :data="data" :columns="columns" row-key="name" />
+          <q-table :data="data" :columns="columns" row-key="id" />
         </div>
       </q-card>
     </div>
   </q-layout>
 </template>
 <script>
+import Axios from 'axios'
 export default {
   name: 'Login',
   data () {
     return {
       user: {
-        codigo: '',
-        nombre: '',
-        edad: 0
+        id: '',
+        name: '',
+        age: 0,
+        document: ''
       },
       id: '',
       columns: [
@@ -116,37 +119,33 @@ export default {
           align: 'left'
         }
       ],
-      data: [
-        {
-          document: '100258965',
-          name: 'Frozen Yogurt',
-          age: 6
-        },
-        {
-          document: '100258978',
-          name: 'kumis',
-          age: 8
-        },
-        {
-          document: '100258944',
-          name: 'Jugo',
-          age: 15
-        },
-        {
-          document: '100258456',
-          name: 'kumis',
-          age: 8
-        },
-        {
-          document: '100257896',
-          name: 'kumis',
-          age: 8
-        }
-      ]
+      data: []
     }
   },
   methods: {
-    sendRegister () {}
+    sendRegister () {
+      Axios.post('/student', {
+        ...this.user
+      })
+        .then(resp => {
+          this.getData()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getData () {
+      Axios.get('/student')
+        .then(resp => {
+          this.data = resp.data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
+  mounted () {
+    this.getData()
   }
 }
 </script>

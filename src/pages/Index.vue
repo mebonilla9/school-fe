@@ -9,7 +9,7 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      value: [ssinfasd\.fsdfsd]
+      value: []
     }
   },
   methods: {
